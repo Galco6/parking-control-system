@@ -13,7 +13,7 @@
 *  Microcontrolador:    LPC4088					      *  Reloj:      MHz   		    *
 *  Lenguaje:            C                     *														*
 *  Fecha Inicio:        10 / 05 / 17          *  EDICION:    1.0          *
-*  Programador:         Víctor Galvín Coronil *                           *
+*  Programador:         VÃ­ctor GalvÃ­n Coronil *                           *
 *                       Miguel                *                           *
 ***************************************************************************/
 
@@ -23,7 +23,7 @@
 #include "joystick.h"
 #include "timer_lpc40xx.h"
 
-#define max_plazas 20				//Número máximo de plazas del parking
+#define max_plazas 20				//NÃºmero mÃ¡ximo de plazas del parking
 
 void ajustar_reloj(void);
 void inicializar_reloj(void);
@@ -46,6 +46,13 @@ int main (void)
 		struct vehiculo lista_base_datos[n];
 		
 		glcd_inicializar();
+	
+		//Configura los pines 10 y 22 (pulsadores) para generar interrupciones
+		LPC_GPIOINT->ENF2 |= (1 << 10)|(1 << 22);
+		NVIC_ClearPendingIRQ(GPIO_IRQn);
+		NVIC_EnableIRQ(GPIO_IRQn);
+		NVIC_SetPriority(GPIO_IRQn, 0);
+		__enable_irq();
 		
 		glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
 								 "%ui:%ui:%ui", horas, minutos, segundos);
