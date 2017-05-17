@@ -38,8 +38,8 @@ struct vehiculo
 		float importe_pago;
 };
 		
-struct vehiculo lista_vehiculos[MAX_PLAZAS];					//Array de estructuras con todos los vehiculos en el parking
-struct vehiculo lista_base_datos[MAX_BASE_DATOS];			//Array de estructuras con todos los vehiculos que han pasado
+struct vehiculo lista_vehiculos[MAX_PLAZAS];		//Array de estructuras con todos los vehiculos en el parking
+struct vehiculo lista_base_datos[MAX_BASE_DATOS];	//Array de estructuras con todos los vehiculos que han pasado
 
 //Declaración de subrutinas
 void ajustar_reloj(void);
