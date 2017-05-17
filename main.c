@@ -69,11 +69,10 @@ typedef struct
 #undef LPC_GPIOINT
 #define LPC_GPIOINT ((LPC_GPIOINT_TypeDef_corregido *) LPC_GPIOINT_BASE)
 
-uint8_t plaza_libre;
-uint32_t num_plazas_libres;
-
 int main (void)
-{			
+{		
+		uint8_t plaza_libre;
+		uint32_t num_plazas_libres;
 		unsigned int horas = 0, minutos = 0, segundos = 0;
 		int n; 
 		
@@ -91,7 +90,7 @@ int main (void)
 		cuenta_plazas_libres(&lista_vehiculos[0]);
 		
 		glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
-								"Numero de plazas libres: %ui", num_plazas_libres);
+			     "Numero de plazas libres: %ui", num_plazas_libres);
 	
 }
 
@@ -102,11 +101,11 @@ void GPIO_IRQHandler(void)
 		{
 			NVIC_ClearPendingIRQ(GPIO_IRQn);
 			glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
-									"BIENVENIDO");
+				     "BIENVENIDO");
 			glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
 			"N Registro: %i\nHora entrada: %f\nMatricula: %c", lista_vehiculos[plaza_libre].num_registro, 
-																												 lista_vehiculos[plaza_libre].hora_entrada,
-																												 lista_vehiculos[plaza_libre].matricula);
+									   lista_vehiculos[plaza_libre].hora_entrada,
+									   lista_vehiculos[plaza_libre].matricula);
 			busca_plaza_libre(&lista_vehiculos[0]);
 			registro_entrada_vehiculo(&lista_vehiculos[plaza_libre]);
 			LPC_GPIOINT->CLR2;
