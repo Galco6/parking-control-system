@@ -164,8 +164,8 @@ void GPIO_IRQHandler(void)
 				glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
 				"N Registro: %02i\nHora entrada: %02i:%02i:%02i\nMatricula: ", 
 			                              lista_vehiculos[plaza_libre].num_registro, 
-															      lista_vehiculos[plaza_libre].hora_entrada[0],
-                                    lista_vehiculos[plaza_libre].hora_entrada[1],
+						      lista_vehiculos[plaza_libre].hora_entrada[0],
+                                                      lista_vehiculos[plaza_libre].hora_entrada[1],
 			                              lista_vehiculos[plaza_libre].hora_entrada[2]);
 			}
 			else
@@ -250,8 +250,8 @@ bool_t busca_plaza_libre(struct vehiculo *ptr_vehiculo)
 				ptr_vehiculo = &lista_vehiculos[i];
 				if (ptr_vehiculo->num_registro == 0)
 				{
-						plaza_libre = i;
-						return TRUE;
+					plaza_libre = i;
+					return TRUE;
 				}
 		}
 		return FALSE;
