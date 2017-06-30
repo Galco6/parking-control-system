@@ -56,8 +56,8 @@ struct vehiculo
 		float importe_pago;
 };
 		
-struct vehiculo lista_vehiculos[MAX_PLAZAS];					//Array de estructuras con todos los vehiculos en el parking
-struct vehiculo lista_base_datos[MAX_BASE_DATOS];			//Array de estructuras con todos los vehiculos que han pasado
+struct vehiculo lista_vehiculos[MAX_PLAZAS];		//Array de estructuras con todos los vehiculos en el parking
+struct vehiculo lista_base_datos[MAX_BASE_DATOS];	//Array de estructuras con todos los vehiculos que han pasado
 
 //Declaración de subrutinas
 void cuenta_plazas_libres(struct vehiculo *ptr_vehiculo);
@@ -111,7 +111,7 @@ while (1) {
 	
 		cuenta_plazas_libres(&lista_vehiculos[0]);
 		glcd_xprintf(95, 20, WHITE, NEGRO, FONT16X32,
-								"PLAZAS DISPONIBLES");
+							     "PLAZAS DISPONIBLES");
 		glcd_xprintf(223, 120, WHITE, NEGRO, FONT16X32,
 								"%02i", num_plazas_libres);
 						
@@ -177,7 +177,7 @@ void GPIO_IRQHandler(void)
 			timer_retardo_ms(TIMER1, 3000);
 			abrir_barrera();
 			timer_retardo_ms(TIMER1, 4000);
-			if(!(LPC_GPIO4-> PIN & (1 << 30)))					//Detecta señal del sensor
+			if(!(LPC_GPIO4-> PIN & (1 << 30)))		//Detecta señal del sensor
 			{
 				//Espera que la señal cambie de estado
 				while(!(LPC_GPIO4-> PIN & (1 << 30)));
@@ -209,8 +209,8 @@ void GPIO_IRQHandler(void)
 			glcd_xprintf(0, 0, WHITE, BLACK, FONT16X32,
 			"N Registro: %02i\nHora entrada: %02i:%02i:%02i\nHora salida: %02i:%02i:%02i\nImporte: %.2f euros", 
 			                                                   lista_vehiculos[registro - 1].num_registro, 
-															                           lista_vehiculos[registro - 1].hora_entrada[0],
-                                                         lista_vehiculos[registro - 1].hora_entrada[1],
+									   lista_vehiculos[registro - 1].hora_entrada[0],
+                                                         		   lista_vehiculos[registro - 1].hora_entrada[1],
 			                                                   lista_vehiculos[registro - 1].hora_entrada[2],
 			                                                   lista_vehiculos[registro - 1].hora_salida[0],
 			                                                   lista_vehiculos[registro - 1].hora_salida[1],
