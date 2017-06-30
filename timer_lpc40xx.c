@@ -66,7 +66,7 @@ void timer_retardo_ms(LPC_TIM_TypeDef *timer_regs,
 		timer_regs->MCR = 1; 
 		timer_regs->IR = 1; 
 		timer_regs->TCR = 1;
-		while ((LPC_TIM0->IR & 1) == 0) {} 
+		while ((timer_regs->IR & 1) == 0) {} 
 }
 
 /***************************************************************************//**
@@ -114,29 +114,4 @@ void timer_esperar_match0(LPC_TIM_TypeDef *timer_regs)
 
 		while ((timer_regs->IR & 1) == 0) {}
 		timer_regs->IR = 1;
-}
-
-/***************************************************************************//**
- * \brief       Programar un timer para que se incremente indefinidamente una
- *              vez por milisegundo.
- *
- * \param[in]   timer_regs    puntero al bloque de registros del timer.
- */
-void timer_iniciar_conteo_ms(LPC_TIM_TypeDef *timer_regs)
-{
-    /* C O M P L E T A R
-     */
-}
-
-/***************************************************************************//**
- * \brief       Leer el valor del registro TC de un timer.
- *
- * \param[in]   timer_regs      puntero al bloque de registros del timer.
- *
- * \return      Valor actual del registro TC de un timer.
- */
-uint32_t timer_leer(LPC_TIM_TypeDef *timer_regs)
-{
-    /* C O M P L E T A R
-     */
 }
